@@ -13,16 +13,16 @@ import {
   Table,
 } from 'semantic-ui-react'
 import ProductService from "../services/productService";
-
+import { Link } from 'react-router-dom'
 
 export default function ProductList() {
 
   const [products, setProducts] = useState([])
 
-  useEffect(()=>{
-    let productService = new ProductService()
-    productService.getProducts().then(result=>setProducts(result.data.data))
-  })
+  useEffect(() => {
+    let productService = new ProductService();
+    productService.getProducts().then(result => setProducts(result.data.data));
+  }, []);
 
   return (
     <div>
@@ -41,11 +41,11 @@ export default function ProductList() {
           {
             products.map(product => (
               <TableRow key={product.id}>
-                <TableCell>product.productName</TableCell>
-                <TableCell>product.unitPrice</TableCell>
-                <TableCell>product.unitsInStock</TableCell>
-                <TableCell>product.quantityPerUnit</TableCell>
-                <TableCell>product.category.categoryName</TableCell>
+                <TableCell><Link to={`/product/${product.productName}`}>{product.productName}</Link></TableCell>
+                <TableCell>{product.unitPrice}</TableCell>
+                <TableCell>{product.unitsInStock}</TableCell>
+                <TableCell>{product.quantityPerUnit}</TableCell>
+                <TableCell>{product.category.categoryName}</TableCell>
               </TableRow>
             ))
           }
@@ -53,7 +53,7 @@ export default function ProductList() {
 
         <TableFooter>
           <TableRow>
-            <TableHeaderCell colSpan='3'>
+            <TableHeaderCell colSpan='5'>
               <Menu floated='right' pagination>
                 <MenuItem as='a' icon>
                   <Icon name='chevron left' />

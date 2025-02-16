@@ -1,16 +1,19 @@
 import React from 'react'
-import { Dropdown, DropdownItem, DropdownMenu } from 'semantic-ui-react'
+import { Dropdown, Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default function CartSummary() {
   return (
-    <div>
-      <Dropdown item text='Language'>
-        <DropdownMenu>
-          <DropdownItem>English</DropdownItem>
-          <DropdownItem>Russian</DropdownItem>
-          <DropdownItem>Spanish</DropdownItem>
-        </DropdownMenu>
+    <Menu.Item style={{ display: 'flex', alignItems: 'center' }}>
+      <Dropdown item text='Sepetiniz'>
+        <Dropdown.Menu>
+          <Dropdown.Item>Monster Laptop</Dropdown.Item>
+          <Dropdown.Item>Samsung Telefon</Dropdown.Item>
+          <Dropdown.Item>El sabunu</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item as={Link} to="/cart">Sepete git</Dropdown.Item>
+        </Dropdown.Menu>
       </Dropdown>
-    </div>
+    </Menu.Item>
   )
 }

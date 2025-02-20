@@ -15,8 +15,10 @@ import SingedIn from './SingedIn'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useSelector } from 'react-redux'
 
 export default function Navi() {
+  const {cartItems} = useSelector(state => state.cart);
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const history = useHistory()
 
@@ -40,7 +42,7 @@ export default function Navi() {
         />
 
         <MenuMenu position='right'>
-          <CartSummary />
+          {cartItems.length > 0 && <CartSummary />}
 
           <MenuItem>
             {isAuthenticated ? <SingedIn signOut={handleSignOut} /> : <SingedOut signIn={handleSignIn} />}

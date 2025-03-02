@@ -53,7 +53,7 @@ export default function ProductList() {
           {
             products.map(product => (
               <TableRow key={product.id}>
-                <TableCell><Link to={`/product/${product.productName}`}>{product.productName}</Link></TableCell>
+                <TableCell><Link to={`/productdetail/${product.productName}`}>{product.productName}</Link></TableCell>
                 <TableCell>{product.unitPrice}</TableCell>
                 <TableCell>{product.unitsInStock}</TableCell>
                 <TableCell>{product.quantityPerUnit}</TableCell>

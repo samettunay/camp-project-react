@@ -8,4 +8,8 @@ export default class ProductService {
     getProductByName(name) {
         return axios.get(`http://localhost:8080/api/products/getByProductName?productName=${name}`)
     }
+
+    addProduct(product) {
+        return axios.post("http://localhost:8080/api/products/add", product)
+    }
 }
